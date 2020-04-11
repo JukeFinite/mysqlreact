@@ -15,7 +15,6 @@ class TodoForm extends Component {
     this.setState({ input: value });
   };
 
-
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("I happened")
@@ -25,15 +24,12 @@ class TodoForm extends Component {
     });
   };
 
-
   fetchTodos = () => {
     axios.get('/api/todos').then(res => {
       console.log(res);
       this.setState({todos: res.data});
     });
   }
-
-
 
   render() {
     return (
