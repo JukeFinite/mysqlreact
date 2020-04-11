@@ -5,7 +5,7 @@ const ListItems = props => (
             <li 
              className={item.completed ? "list-group-item text-success" : "list-group-item text-danger"}
              key={item.id}
-             userid={item.userId}>{item.title}</li>
+             >{item.title}</li>
         ))}
     </ul>
 );

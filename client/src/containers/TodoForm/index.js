@@ -14,22 +14,27 @@ class TodoForm extends Component {
     const { value } = e.target;
     this.setState({ input: value });
   };
-  handleSubmit = (e) => {
 
+
+  handleSubmit = (e) => {
     e.preventDefault();
     console.log("I happened")
-    const newTodo = {id: 1, userId: 1, completed: false, title: this.state.input}
-    axios.get('https://jsonplaceholder.typicode.com/todos').then(res => {
-      const todos = [...res.data, newTodo];
-      this.setState({ todos });
+    // The second parameter to this post request is going to become req.body
+    axios.post('/api/todos', {title: this.state.input }).then(res => {
+      this.setState({ todos: res.data })
     });
   };
+
+
   fetchTodos = () => {
-    axios.get('https://jsonplaceholder.typicode.com/todos').then(res => {
+    axios.get('/api/todos').then(res => {
       console.log(res);
       this.setState({todos: res.data});
     });
   }
+
+
+
   render() {
     return (
       <div>

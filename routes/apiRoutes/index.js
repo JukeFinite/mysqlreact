@@ -1,17 +1,15 @@
 const router = require('express').Router();
 
-const blogRoutes = require('./blogRoutes');
-const commentRoutes = require('./commentRoutes');
 
+const todoRoutes = require('./todoRoutes');
 // /api  prepended to every route declared in here
-// /api/blog
+// todos
 
-// /api/blogs
 
-// /api/b
-router.use('/blogs', blogRoutes);
+// declares a route for /api/todos
+router.use("/todos", todoRoutes);
 
-// /api/comment
-router.use('/comments', commentRoutes);
-
+// declares a route for /api/comments
+router.use("/comments", todoRoutes);
+router.use("/blogs", todoRoutes);
 module.exports = router;

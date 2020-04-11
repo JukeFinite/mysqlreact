@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'password',
-    database: 'ice_creamdb'
+    database: 'app_db'
 });
 
 module.exports = connection;
