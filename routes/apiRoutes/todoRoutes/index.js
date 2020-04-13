@@ -9,14 +9,14 @@ const todoQueries = require('./../../../models/Todos/todoQueries');
 const connection = require('./../../../config/connection');
 
 
-router.route('/')
-    .get(todosController.getTodos)
-    .post(todosController.insertTodo);
-// router.get('/', (req, res) => {
-//     connection.query(todoQueries.getTodos, (err, todos) => {
-//         res.json(todos);
-//     })
-// });
+// router.route('/')
+//     .get(todosController.getTodos)
+//     .post(todosController.insertTodo);
+router.get('/', (req, res) => {
+    connection.query(todoQueries.getTodos, (err, todos) => {
+        res.json(todos);
+    });
+});
 
 // router.post('/', (req, res) => {
 //     const { title } = req.body;
