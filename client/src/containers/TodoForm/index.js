@@ -32,6 +32,7 @@ class TodoForm extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <form>
@@ -48,7 +49,7 @@ class TodoForm extends Component {
             Submit
           </button>
         </form>
-        <ListItem items={this.state.todos} />
+        <ListItem items={this.state.todos} {...this.props} />
       </div>
     );
   }

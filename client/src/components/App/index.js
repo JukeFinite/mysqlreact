@@ -6,6 +6,7 @@ import TodoForm from "../../containers/TodoForm";
 import Counter from "../../containers/Counter";
 import Comments from "../../containers/Comments";
 import Navbar from './../Navbar';
+import TodoListItem from './../../containers/TodoListItem';
 
 const App = props => (
   <Router>
@@ -13,9 +14,8 @@ const App = props => (
       <Navbar/>
       <Counter/>
       <Route exact path="/" component={TodoForm}/>
-      <Route exact path="/comments" component={Comments}/>  
+      <Route exact path="/todo/:id" component={TodoListItem}></Route>  
     </div>
   </Router>
-
 );
 export default App;
