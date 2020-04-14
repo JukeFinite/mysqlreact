@@ -11,9 +11,15 @@ router.route('/')
 
 
 router.route('/:todoId')
-    .delete(todosController.deleteTodoById);
+    .delete(todosController.deleteTodoById)
+    .get(todosController.getTodoById)
+    .patch(todosController.updateTodoTitleById);
 
-    
+
+
+ // when you want to update more than 1 property in an object
+
+// PATCH  when you only want to update 1 property in an object
 // router.get('/', (req, res) => {
 //     connection.query(todoQueries.getTodos, (err, todos) => {
 //         res.json(todos);

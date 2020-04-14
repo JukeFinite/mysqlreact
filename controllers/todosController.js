@@ -33,5 +33,25 @@ module.exports = {
             }
             return res.json({ success: true });
         });
+    },
+    getTodoById: (req, res) => {
+        const { todoId } = req.params;
+        connection.query(todoQueries.getTodoById, parseInt(todoId), (err, todos) => {
+            if(err) {
+                return res.json(err);
+            }
+            return res.json(todos[0]);
+        });
+    },
+    updateTodoTitleById: (req, res) => {
+        const { todoId } = req.params;
+        const { title } = req.body;
+
+        connection.query(todoQueries.updateTodoTitleById, [title, todoId], (err, dbJson) => {``
+            if(err) {
+                return res.json({err});
+            }
+            res.json({ success: true });
+        });
     }
 }

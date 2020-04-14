@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const ListItems = props => {
     console.log(props.items);
     return (
@@ -13,6 +15,7 @@ const ListItems = props => {
                     <button 
                         className="btn btn-danger"
                         onClick={ () => props.handleDelete(item.id) }>Delete</button>
+                    <Link to={`/todos/${item.id}`}>Go to Todo</Link>
                 </li>
             ))}
         </ul>
