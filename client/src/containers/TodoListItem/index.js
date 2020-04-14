@@ -28,7 +28,7 @@ class TodoListItem extends Component {
     handleSubmit = async event => {
         event.preventDefault();
         try {
-            const res =  await axios.patch(`/api/todos/${this.props.match.params.todoId}`);
+            const res =  await axios.patch(`/api/todos/${this.props.match.params.todoId}`, {title: this.state.title});
             const { data } =  await axios.get(`/api/todos/${this.props.match.params.todoId}`);
             this.setState({ todo: data, e: '' });
             // this.setState({ todo: data });
