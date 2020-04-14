@@ -20,7 +20,7 @@ class TodoForm extends Component {
     console.log("I happened")
     // The second parameter to this post request is going to become req.body
     axios.post('/api/todos', {title: this.state.input }).then(res => {
-      this.setState({ todos: res.data })
+      this.setState({ todos: res.data, input: "" });
     });
   };
 
@@ -29,6 +29,15 @@ class TodoForm extends Component {
       console.log(res);
       this.setState({todos: res.data});
     });
+  }
+
+  deleteTodoById = async id => {
+    try {
+      const response = await axios.delete(`/api/todos/${id}`);
+      this.fetchTodos();
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   render() {
@@ -48,9 +57,10 @@ class TodoForm extends Component {
             Submit
           </button>
         </form>
-        <ListItem items={this.state.todos} />
+        <ListItem items={this.state.todos} handleDelete={this.deleteTodoById} />
       </div>
     );
   }
 }
+
 export default TodoForm;

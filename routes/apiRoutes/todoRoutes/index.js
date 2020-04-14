@@ -1,22 +1,24 @@
 const router = require('express').Router();
 
-
+const todosController = require('./../../../controllers/todosController');
 // /api/todos prepended to every route
 
 
-const todoQueries = require('./../../../models/Todos/todoQueries');
 
-const connection = require('./../../../config/connection');
+router.route('/')
+    .get(todosController.getTodos)
+    .post(todosController.insertTodo);
 
 
-// router.route('/')
-//     .get(todosController.getTodos)
-//     .post(todosController.insertTodo);
-router.get('/', (req, res) => {
-    connection.query(todoQueries.getTodos, (err, todos) => {
-        res.json(todos);
-    });
-});
+router.route('/:todoId')
+    .delete(todosController.deleteTodoById);
+
+    
+// router.get('/', (req, res) => {
+//     connection.query(todoQueries.getTodos, (err, todos) => {
+//         res.json(todos);
+//     });
+// });
 
 // router.post('/', (req, res) => {
 //     const { title } = req.body;
