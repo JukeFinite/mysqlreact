@@ -49,7 +49,7 @@ module.exports = {
 
         connection.query(todoQueries.updateTodoTitleById, [title, todoId], (err, dbJson) => {``
             if(err) {
-                return res.json({err});
+                throw new Error(err);
             }
             res.json({ success: true });
         });
