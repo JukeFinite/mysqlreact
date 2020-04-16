@@ -30,7 +30,7 @@ class TodoListItem extends Component {
         try {
             const res =  await axios.patch(`/api/todos/${this.props.match.params.todoId}`, {title: this.state.title});
             const { data } =  await axios.get(`/api/todos/${this.props.match.params.todoId}`);
-            this.setState({ todo: data, e: '' });
+            this.setState({ todo: data, e: '', title: '' });
             // this.setState({ todo: data });
         } catch(e) {
             this.setState({ error: e.toString() });
@@ -48,7 +48,7 @@ class TodoListItem extends Component {
                 <input 
                     onChange={this.handleChange}
                     value={this.state.title}/>
-                <button onClick={this.handleSubmit}>Submit Change</button>
+                <button type="submit" onClick={this.handleSubmit}>Submit Change</button>
             </div>
         );
     }
